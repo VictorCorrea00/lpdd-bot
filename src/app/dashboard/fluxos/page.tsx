@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { HelpCircle, Users, Sparkles, Upload, Plus, Link as LinkIcon, Zap, Box, Brain, Loader2, GitBranch } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -138,7 +139,7 @@ export default function FluxosPage() {
         <div className="px-4 space-y-4">
           <p className="text-zinc-500 text-xs font-medium uppercase tracking-wider mb-2">Seus Fluxos Ativos</p>
           {flows.map((flow) => (
-            <div key={flow.id} className="bg-[#0f0f0f] border border-zinc-800/80 rounded-2xl p-4 flex items-center justify-between cursor-pointer hover:border-zinc-700 transition-colors">
+            <Link key={flow.id} href={`/dashboard/fluxos/${flow.id}`} className="bg-[#0f0f0f] border border-zinc-800/80 rounded-2xl p-4 flex items-center justify-between cursor-pointer hover:border-zinc-700 transition-colors block">
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
                   <GitBranch className="w-5 h-5 text-[#00a8ff]" />
@@ -153,7 +154,7 @@ export default function FluxosPage() {
               <div className="flex items-center gap-2">
                 <span className={`flex h-2 w-2 rounded-full ${flow.is_active ? 'bg-emerald-500' : 'bg-red-500'}`}></span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       ) : (
